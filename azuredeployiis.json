@@ -76,7 +76,7 @@
     "autoUpgradeMinorVersion": true,
     "settings": {
       "fileUris": [
-        "https://github.com/felipe2ajs/AzureARMTemplates/blob/master/configure-vm.ps1"
+        "https://github.com/felipe2ajs/DeployScripts/blob/master/configure-vm.ps1"
       ]
     },
     "protectedSettings": {
