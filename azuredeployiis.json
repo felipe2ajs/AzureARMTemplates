@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
@@ -38,7 +38,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2_v3",
+      "defaultValue": "Standard_A2_v2",
       "metadata": {
         "description": "Size of the virtual machine."
       }
@@ -65,7 +65,7 @@
   },
   "resources": [
     {
-  "name": "[concat(variables('vmName'),'/', 'ConfigureIIS')]",
+    "name": "[concat(variables('vmName'),'/', 'ConfigureIIS')]",
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
@@ -81,13 +81,13 @@
     },
     "protectedSettings": {
        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File configure-vm.ps1"
-    }
-  },
-  "dependsOn": [
-    "[resourceId('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-  ]
-},
-    {
+      }
+      },
+     "dependsOn": [
+       "[resourceId('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+      ]
+   },
+   {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2018-11-01",
       "name": "[variables('storageAccountName')]",
@@ -130,7 +130,7 @@
               "sourceAddressPrefix":  "*",
               "destinationAddressPrefix":  "*"
             }
-          },
+          },            
           {
             "name": "allow_80",
             "properties": {
@@ -143,7 +143,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "*"
             }
-          }    
+          }
         ]
       }
     },
